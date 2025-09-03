@@ -1,21 +1,23 @@
 import { Text, View, Image, TextInput, Dimensions, Pressable, Touchable,
-TouchableOpacity, TouchableWithoutFeedback, Alert, ScrollView, Platform, StyleSheet} from "react-native";
+TouchableOpacity, TouchableWithoutFeedback, Alert, ScrollView, Platform,
+ StyleSheet} from "react-native";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useState } from "react";
+
+import Button from "../component/button";
+
 
 export default function Index() {
 
             // HOOKS //
 
   const [firstName , setFirstName] = useState(''); 
-  
   const [lastName, setLastName] = useState('')
-
   const [email, setMail] = useState('')
-
   const [password, setPassword] = useState('')
+  const [passwordVisible, setPasswordVisible] = useState(false)
 
   // console.log(` ${firstName}  ${lastName}  ${email}  ${password}`)
 
@@ -118,9 +120,26 @@ export default function Index() {
         
          <Text style={styles.label}>Password</Text>
 
-         <TextInput secureTextEntry={true} keyboardType='number-pad' style={styles.input} onChangeText={(password) =>{
+         <TextInput secureTextEntry={!passwordVisible} keyboardType='number-pad' 
+         style={styles.input} onChangeText={(password) =>{
           setPassword(password)
          }} />
+
+
+         <TouchableOpacity onPress={() =>{
+
+          setPasswordVisible(!passwordVisible)
+
+         }} style={{backgroundColor:'white',padding:2,
+           position:'absolute', top:45, right:25}}>
+            <Text style={{color:'black'}}>{passwordVisible ? 'Hide me' : 'Show me'}</Text>
+         </TouchableOpacity>
+
+      </View>
+
+      <View>
+          <Button/>
+
       </View>
 
 
