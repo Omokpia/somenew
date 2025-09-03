@@ -9,8 +9,20 @@ export default function Index() {
 
             // HOOKS //
 
-  const [firstName , setfirstName] = useState('');         
-  console.log('first name', firstName)
+  const [firstName , setFirstName] = useState(''); 
+  
+  const [lastName, setLastName] = useState('')
+
+  const [email, setMail] = useState('')
+
+  const [password, setPassword] = useState('')
+
+  // console.log(` ${firstName}  ${lastName}  ${email}  ${password}`)
+
+
+
+
+  // console.log('first name', FirstName)
 
 
 
@@ -69,10 +81,10 @@ export default function Index() {
         
          <Text style={styles.label}>First name</Text>
 
-         <TextInput style={styles.input} onChangeText={(text) =>{
+         <TextInput keyboardType='default' style={styles.input} onChangeText={(text) =>{
 
             // console.log(text)
-            setfirstName(text)
+            setFirstName(text)
          }} />
 
          
@@ -84,7 +96,11 @@ export default function Index() {
         
          <Text style={styles.label}>Last name</Text>
 
-         <TextInput style={styles.input} />
+         <TextInput keyboardType="default" style={styles.input} onChangeText={(text) =>{
+          // console.log(text)
+
+          setLastName(text)
+         }} />
       </View>
 
       
@@ -92,7 +108,9 @@ export default function Index() {
         
          <Text style={styles.label}>Email</Text>
 
-         <TextInput style={styles.input} />
+         <TextInput keyboardType='email-address' style={styles.input} onChangeText={(mail) =>{
+          setMail(mail)
+         }} />
       </View>
 
       
@@ -100,7 +118,9 @@ export default function Index() {
         
          <Text style={styles.label}>Password</Text>
 
-         <TextInput style={styles.input} />
+         <TextInput secureTextEntry={true} keyboardType='number-pad' style={styles.input} onChangeText={(password) =>{
+          setPassword(password)
+         }} />
       </View>
 
 
