@@ -4,7 +4,7 @@ TouchableOpacity, TouchableWithoutFeedback, Alert, ScrollView, Platform,
 
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Button from "../component/button";
 
@@ -18,6 +18,7 @@ export default function Index() {
   const [email, setMail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordVisible, setPasswordVisible] = useState(false)
+
 
   // console.log(` ${firstName}  ${lastName}  ${email}  ${password}`)
 
@@ -83,7 +84,7 @@ export default function Index() {
         
          <Text style={styles.label}>First name</Text>
 
-         <TextInput keyboardType='default' style={styles.input} onChangeText={(text) =>{
+         <TextInput placeholder="first name" keyboardType='default' style={styles.input} onChangeText={(text) =>{
 
             // console.log(text)
             setFirstName(text)
@@ -98,7 +99,7 @@ export default function Index() {
         
          <Text style={styles.label}>Last name</Text>
 
-         <TextInput keyboardType="default" style={styles.input} onChangeText={(text) =>{
+         <TextInput placeholder="last name" keyboardType="default" style={styles.input} onChangeText={(text) =>{
           // console.log(text)
 
           setLastName(text)
@@ -110,7 +111,7 @@ export default function Index() {
         
          <Text style={styles.label}>Email</Text>
 
-         <TextInput keyboardType='email-address' style={styles.input} onChangeText={(mail) =>{
+         <TextInput placeholder="email" keyboardType='email-address' style={styles.input} onChangeText={(mail) =>{
           setMail(mail)
          }} />
       </View>
@@ -120,7 +121,7 @@ export default function Index() {
         
          <Text style={styles.label}>Password</Text>
 
-         <TextInput secureTextEntry={!passwordVisible} keyboardType='number-pad' 
+         <TextInput placeholder="password" secureTextEntry={!passwordVisible} keyboardType='number-pad' 
          style={styles.input} onChangeText={(password) =>{
           setPassword(password)
          }} />
@@ -138,7 +139,12 @@ export default function Index() {
       </View>
 
       <View>
-          <Button/>
+          <Button buttonStyle={{backgroundColor:'red', borderColor:'green', 
+            borderWidth:5}} text={'Sign in'}/>
+
+          <Button buttonStyle={{backgroundColor:'green'}} text={'Log in'}/>
+
+          <Button text={'Register'}/>
 
       </View>
 
