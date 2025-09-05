@@ -2,13 +2,12 @@
 import { TouchableOpacity, Text, Alert } from "react-native"
 
 
-const Button = ({text, buttonStyle}) =>{
+const Button = ({text, buttonStyle, onPress}) =>{
 
     return(
 
-        <TouchableOpacity onPress={()=>{
-            Alert.alert(`Press`, `The ${text} button was pressed`)
-        }}style={{backgroundColor:'black', borderRadius:25, height:58, padding:10,
+        <TouchableOpacity onPress={onPress}
+             style={{backgroundColor:'black', borderRadius:25, height:58, padding:10,
             justifyContent:'center', marginVertical:10, ...buttonStyle}}>
 
 

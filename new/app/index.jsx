@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 
 import Button from "../component/button";
 
+import { router } from "expo-router";
+
 
 export default function Index() {
 
@@ -18,6 +20,18 @@ export default function Index() {
   const [email, setMail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordVisible, setPasswordVisible] = useState(false)
+
+
+// useEffect(effect, dependencies)
+
+// useEffect(() =>, [])
+
+
+  useEffect(() => {
+
+    console.log('This was fired from the useEffect hook')
+
+  }, [firstName, lastName])
 
 
   // console.log(` ${firstName}  ${lastName}  ${email}  ${password}`)
@@ -57,8 +71,10 @@ export default function Index() {
     // }
 
     // NOTE: back tick(``) allows us to use/run Javascript
-    //  expressions on our code and it will work perfectly and it is used with a dollar sign($)
-    // e.g: Alert.alert(`${}`, `${}`). Anything inside the curly braces is a JavaScript expression.
+    //  expressions on our code and it will work perfectly 
+    // and it is used with a dollar sign($)
+    // e.g: Alert.alert(`${}`, `${}`). Anything inside the curly 
+    // braces is a JavaScript expression.
 
 
 
@@ -74,7 +90,7 @@ export default function Index() {
 
 
       <Text style={{fontWeight:'bold', fontSize:24, textAlign:'center', 
-        marginVertical:30 }}>REUSABLE COMPONENT</Text>
+        marginVertical:10 }}>REUSABLE COMPONENT</Text>
 {/* 
         Reusable compponent allowsus to reuse a component multiple times,
          without rewriting the entire component over again.
@@ -84,7 +100,8 @@ export default function Index() {
         
          <Text style={styles.label}>First name</Text>
 
-         <TextInput placeholder="first name" keyboardType='default' style={styles.input} onChangeText={(text) =>{
+         <TextInput placeholder="first name" keyboardType='default' 
+         style={styles.input} onChangeText={(text) =>{
 
             // console.log(text)
             setFirstName(text)
@@ -99,7 +116,8 @@ export default function Index() {
         
          <Text style={styles.label}>Last name</Text>
 
-         <TextInput placeholder="last name" keyboardType="default" style={styles.input} onChangeText={(text) =>{
+         <TextInput placeholder="last name" keyboardType="default"
+          style={styles.input} onChangeText={(text) =>{
           // console.log(text)
 
           setLastName(text)
@@ -111,7 +129,8 @@ export default function Index() {
         
          <Text style={styles.label}>Email</Text>
 
-         <TextInput placeholder="email" keyboardType='email-address' style={styles.input} onChangeText={(mail) =>{
+         <TextInput placeholder="email" keyboardType='email-address' 
+         style={styles.input} onChangeText={(mail) =>{
           setMail(mail)
          }} />
       </View>
@@ -121,7 +140,8 @@ export default function Index() {
         
          <Text style={styles.label}>Password</Text>
 
-         <TextInput placeholder="password" secureTextEntry={!passwordVisible} keyboardType='number-pad' 
+         <TextInput placeholder="password" secureTextEntry={!passwordVisible}
+          keyboardType='number-pad' 
          style={styles.input} onChangeText={(password) =>{
           setPassword(password)
          }} />
@@ -133,13 +153,16 @@ export default function Index() {
 
          }} style={{backgroundColor:'white',padding:2,
            position:'absolute', top:45, right:25}}>
-            <Text style={{color:'black'}}>{passwordVisible ? 'Hide me' : 'Show me'}</Text>
+            <Text style={{color:'black'}}>{passwordVisible ? 'Hide me' 
+            : 'Show me'}</Text>
          </TouchableOpacity>
 
       </View>
 
       <View>
-          <Button buttonStyle={{backgroundColor:'red', borderColor:'green', 
+          <Button onPress={() =>{
+            router.push('./profile')
+          }} buttonStyle={{backgroundColor:'red', borderColor:'green', 
             borderWidth:5}} text={'Sign in'}/>
 
           <Button buttonStyle={{backgroundColor:'green'}} text={'Log in'}/>
@@ -170,11 +193,13 @@ export default function Index() {
       
 
 {/* Image is a self closing component */}
-      {/* <Image style={{marginTop:height*.02}} source={require('../assets/images/favicon.png')}/> 
+      {/* <Image style={{marginTop:height*.02}} 
+      source={require('../assets/images/favicon.png')}/> 
        */}
 {/* TextInput is a self closing component */}
 
-      {/* <TextInput style={{borderColor:'red', color:'white', borderWidth:2, fontColor:'white',
+      {/* <TextInput style={{borderColor:'red', color:'white', 
+      borderWidth:2, fontColor:'white',
       borderRadius:10, height:50, paddingLeft:20, marginTop: height*.05}}/>
 
       <Pressable onPress={() =>{
@@ -182,7 +207,8 @@ export default function Index() {
         console.log('My name is Godspower.')
         Alert.alert('ERROR', 'There was an error')
 
-      }} style={{backgroundColor:'white', width:width*.4, marginTop:40, padding:30}}>
+      }} style={{backgroundColor:'white', width:width*.4,
+        marginTop:40, padding:30}}>
         <Text style={{color:'red' }}>Click me!</Text>
       </Pressable>
 
@@ -191,7 +217,8 @@ export default function Index() {
         console.log('I love coding!!!')
         Alert.alert('SUCCESS', 'I was clicked successfully')
       
-      }} style={{backgroundColor:'white', width:width*.4, marginTop:40, padding:30}}>
+      }} style={{backgroundColor:'white', width:width*.4, 
+       marginTop:40, padding:30}}>
 
         <Text style={{color:'blue' }}>LogIn 1!</Text>
 
@@ -202,13 +229,15 @@ export default function Index() {
         console.log('I love coding!!!')
         Alert.alert('SUCCESS', 'I was clicked successfully')
       
-      }} style={{backgroundColor:'white', width:width*.4, marginTop:40, padding:30}}>
+      }} style={{backgroundColor:'white', width:width*.4,
+        marginTop:40, padding:30}}>
 
         <Text style={{color:'blue' }}>LogIn 2!</Text>
 
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={greetBasedOnDevice} style={{backgroundColor:'white',
+      <TouchableOpacity onPress={greetBasedOnDevice} 
+      style={{backgroundColor:'white',
          width:width*.4, marginTop:40, padding:30}}>
 
         <Text style={{color:'blue' }}>LogIn 3!</Text>
