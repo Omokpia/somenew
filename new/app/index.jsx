@@ -153,8 +153,10 @@ export default function Index() {
 
          }} style={{backgroundColor:'white',padding:2,
            position:'absolute', top:45, right:25}}>
+
             <Text style={{color:'black'}}>{passwordVisible ? 'Hide me' 
             : 'Show me'}</Text>
+
          </TouchableOpacity>
 
       </View>
