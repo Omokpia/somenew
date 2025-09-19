@@ -10,16 +10,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 
 
-//     function getMovies() {
+//      function getMovies() {
 
-        // fetch(url, {
-        // method: 'DELETE',
-        // headers: {
-        //     'x-rapidapi-key': 'c0a325639emsh7652e48950072a3p108dc3jsnf7226afa7c38',
-		//     'x-rapidapi-host': 'imdb236.p.rapidapi.com'
-        // }
+//         fetch(url, {
+//         method: 'DELETE',
+//         headers: {
+//             'x-rapidapi-key': 'c0a325639emsh7652e48950072a3p108dc3jsnf7226afa7c38',
+// 		    'x-rapidapi-host': 'imdb236.p.rapidapi.com'
+//         }
     
-        // })
+//         })
 
 
 //         try{
@@ -76,8 +76,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
     return(
         <SafeAreaView>
 
-            <Text style={{color:'black', fontSize:30, 
-                alignSelf:"center"}}>Movie screen</Text>
+            <Text style={{color:'black', fontSize:50, 
+                alignSelf:"center"}}>Movie Screen</Text>
 
         </SafeAreaView>
     )
