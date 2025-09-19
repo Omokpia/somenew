@@ -169,7 +169,9 @@ export default function Index() {
 
           <Button buttonStyle={{backgroundColor:'green'}} text={'Log in'}/>
 
-          <Button text={'Register'}/>
+          <Button onPress={() =>{
+            router.push('./movie')
+          }} text={'Register'}/>
 
       </View>
 
