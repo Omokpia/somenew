@@ -16,7 +16,7 @@ const MovieScreen = () => {
 
 
     const [isFetching , setIsFetching] = useState(false)
-    const [moviesData, setMoviesData] = useState(null)
+    const [moviesData, setMoviesData] = useState([])
 
     console.log(`The amount of movies fetched is ${moviesData?.length}`)
 
@@ -46,9 +46,10 @@ const MovieScreen = () => {
 
             }).then((data) =>{
 
-                console.log('This is my data in json format ', data.results[0])
+                // console.log('This is my data in json format ', data.results[0])
 
-                setMoviesData(data.results)
+                // setMoviesData(data.results)
+                console.log(data)
 
                 // Alert.alert('Success', 'The request was successfully')
 
@@ -85,23 +86,23 @@ const MovieScreen = () => {
          backgroundColor:'white', flex:1}}>
             
 
-            <Text style={{color:'black', fontSize:50, 
-                alignSelf:"center"}}>Movie Screen</Text>
 
-
-            <View style={{marginTop:0}}>  
+            {/* <View style={{marginTop:0}}>  
 
             <ActivityIndicator animating={isFetching} size={'large'} color={'red'} />
 
-            </View>
+            </View> */}
 
-            <FlatList data={moviesData} renderItem={({item}) =>{
+            <FlatList showsVerticalScrollIndicator={false} 
+            data={moviesData} renderItem={({item}) =>{
                 return(
                     <View>
 
-                            <Image style={{height:100, width:100}} source={{uri:item.primaryImage}}/>
+                            <Image style={{height:100, width:100}} 
+                            source={{uri:item.primaryImage}}/>
 
-                            <Text style={{fontSize:15, marginBottom:5,fontWeight:'bold'}}>{item.primaryTitle}</Text>
+                            <Text style={{fontSize:15, marginBottom:5,
+                                fontWeight:'bold'}}>{item.primaryTitle}</Text>
 
                             <Text style={{fontSize:18}}>{item.description}</Text>
                         </View>
@@ -112,7 +113,23 @@ const MovieScreen = () => {
             ListHeaderComponent={() => {
                 return(
                     <View style={{marginBottom:30}}>
-                        <Text style={{fontSize:30, color:'red',textAlign:'center'}}>This is my List heading</Text>
+                        <Text style={{color:'black', fontSize:50, 
+                alignSelf:"center"}}>Movie Screen</Text>
+                    </View>
+                )
+            }}
+
+            ListEmptyComponent={() =>{
+                return(
+                    <View>
+
+                         <ActivityIndicator animating={true}
+                         size={'large'} color={'red'} /> 
+
+                         {/* <Text style={{textAlign:'center'}}>
+                            The data is fetching.....</Text> */}
+
+
                     </View>
                 )
             }}
@@ -120,7 +137,17 @@ const MovieScreen = () => {
             ListFooterComponent={() => {
                 return(
                     <View style={{marginVertical:30}}>
-                        <Text style={{fontSize:30, color:'red', textAlign:'center'}}>This is the end of the List</Text>
+
+                        {
+                            moviesData?.length >= 1 ? (
+                                 <Text style={{fontSize:30, color:'red',
+                             textAlign:'center'}}>This is the end of the List</Text>)
+                             : null
+                        }
+
+
+                       
+
                     </View>
                 )
             }}
@@ -134,9 +161,11 @@ const MovieScreen = () => {
                     return(
                         <View>
 
-                            <Image style={{height:100, width:100}} source={{uri:data.primaryImage}}/>
+                            <Image style={{height:100, width:100}}
+                             source={{uri:data.primaryImage}}/>
 
-                            <Text style={{fontSize:15, marginBottom:5,fontWeight:'bold'}}>{data.primaryTitle}</Text>
+                            <Text style={{fontSize:15, marginBottom:5,
+                            fontWeight:'bold'}}>{data.primaryTitle}</Text>
 
                             <Text style={{fontSize:18}}>{data.description}</Text>
                         </View>
