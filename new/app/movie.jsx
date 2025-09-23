@@ -1,5 +1,8 @@
 import {Text , ActivityIndicator, Alert,
-     View, Image, ScrollView, FlatList} from "react-native"
+     View, Image, ScrollView, FlatList} from "react-native";
+
+
+import axios from "axios";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -23,7 +26,9 @@ const MovieScreen = () => {
 
     useEffect(() =>{
 
-        getMovies()
+        // getMovies()
+
+        getMoviesWithAxios()
 
     }, [])
 
@@ -48,10 +53,37 @@ const MovieScreen = () => {
 
                 // console.log('This is my data in json format ', data.results[0])
 
-                // setMoviesData(data.results)
-                console.log(data)
 
-                // Alert.alert('Success', 'The request was successfully')
+
+                 if(!data?.results){
+                //     Alert.alert('Error', data?.message)
+                //     return
+
+                    
+                 if(data?.message.toLowerCase().includes('Exceeded'.toLowerCase())){
+                //    return console.log('Exceeded is in the error message')
+                   return Alert.alert('Message', 'You have exceeded your quota for the month, kindly upgrade your plan')
+                }
+            }
+
+                
+
+                
+
+
+
+
+
+
+
+
+                 console.log(data)
+                console.log(data.results)
+
+            setMoviesData(data.results)
+
+
+                Alert.alert('Success', 'The request was successfully')
 
             }).catch((error) =>{
 
@@ -77,7 +109,37 @@ const MovieScreen = () => {
 
     }
 
+    const getMoviesWithAxios = async () =>{
 
+        try{
+
+            const response = await axios.get(url, {
+
+                headers: {
+                        'x-rapidapi-key': 'c0a325639emsh7652e48950072a3p108dc3jsnf7226afa7c38',
+                    	'x-rapidapi-host': 'imdb236.p.rapidapi.com'
+                }
+
+            })
+
+            
+
+            console.log(response)
+            
+
+        }
+
+        catch(error){
+
+            console.log(error)
+
+        }
+
+        finally{
+
+        }
+
+    }
 
      
 
@@ -123,7 +185,7 @@ const MovieScreen = () => {
                 return(
                     <View>
 
-                         <ActivityIndicator animating={true}
+                         <ActivityIndicator animating={isFetching}
                          size={'large'} color={'red'} /> 
 
                          {/* <Text style={{textAlign:'center'}}>
